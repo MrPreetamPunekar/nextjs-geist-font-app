@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title="New Campaign"
+            app:titleTextColor="@android:color/white"
+            app:navigationIcon="@drawable/ic_close"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Campaign Name -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/campaignNameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Campaign Name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/campaignNameInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Message Template -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/messageTemplateLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Message Template"
+                app:helperText="Use {Name} for personalization and {Hi|Hello|Hey} for spintax"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/messageTemplateInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:gravity="top"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Attachments Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Attachments"
+                android:textStyle="bold"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/attachmentsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:minHeight="48dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addAttachmentButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Attachment"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+            <!-- Schedule Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Schedule"
+                        android:textStyle="bold"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/scheduleSwitch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Schedule for later"
+                        android:layout_marginTop="8dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/scheduleContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/datePickerButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Select Date"
+                            android:layout_marginTop="8dp"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/timePickerButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Select Time"
+                            android:layout_marginTop="8dp"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/startCampaignButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:text="Start Campaign"
+        app:icon="@drawable/ic_send"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
